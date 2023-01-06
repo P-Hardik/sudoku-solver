@@ -1,6 +1,6 @@
 //This is a fast and efficent Sudoku puzzle solver! Made on Jan 5, 2023 in my Christmas Break!
 /*  
-    This program reads the incomplete Sudoku from the user,
+    This program reads the incomplete Sudoku from the user input,
     and then uses a backtracking algorithm to find a solution. 
     If a solution is found, it is printed to the console. 
     Otherwise, it prints "Unable to solve the Sudoku".
