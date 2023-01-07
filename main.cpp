@@ -8,15 +8,15 @@
     Here is an example of a user input for an incomplete Sudoku:
     
     IMPORTANT: MAKE SURE THERE IS SPACE BETWEEN EACH NUMBER!!!
-    3 0 6 5 0 8 4 0 0
-    5 2 0 0 0 0 0 0 0
-    0 8 7 0 0 0 0 3 1       
-    0 0 3 0 1 0 0 8 0
-    9 0 0 8 6 3 0 0 5
-    0 5 0 0 9 0 6 0 0
-    1 3 0 0 0 0 2 5 0
-    0 0 0 0 0 0 0 7 4
-    0 0 5 2 0 6 3 0 0
+    0 5 0 0 0 0 0 0 4
+    2 0 0 0 0 0 0 3 0
+    0 0 0 2 0 0 8 0 5
+    0 6 0 0 7 8 1 0 0
+    0 0 0 0 0 0 0 0 0
+    8 0 0 0 3 9 2 7 0
+    0 0 0 4 0 0 0 0 7
+    0 0 4 9 8 6 0 0 1
+    0 1 0 0 0 0 0 0 0
 
     Please attempt to solve the Sudoku yourself first ;)
     */
@@ -27,8 +27,7 @@
 using namespace std;
 
 // Function to check if a number is valid for a given cell
-bool isValid(int board[9][9], int row, int col, int num)
-{
+bool isValid(int board[9][9], int row, int col, int num){
   // Check row and column
   for (int i = 0; i < 9; i++)
     if (board[row][i] == num || board[i][col] == num)
@@ -46,8 +45,7 @@ bool isValid(int board[9][9], int row, int col, int num)
 }
 
 // Function to find an empty cell
-bool findEmptyCell(int board[9][9], int &row, int &col)
-{
+bool findEmptyCell(int board[9][9], int &row, int &col){
   for (row = 0; row < 9; row++)
     for (col = 0; col < 9; col++)
       if (board[row][col] == 0)
@@ -56,16 +54,13 @@ bool findEmptyCell(int board[9][9], int &row, int &col)
 }
 
 // Function to solve the Sudoku
-bool solveSudoku(int board[9][9])
-{
+bool solveSudoku(int board[9][9]){
   int row, col;
   if (!findEmptyCell(board, row, col))
     return true;
 
-  for (int num = 1; num <= 9; num++)
-  {
-    if (isValid(board, row, col, num))
-    {
+  for (int num = 1; num <= 9; num++){
+    if (isValid(board, row, col, num)){
       board[row][col] = num;
       if (solveSudoku(board))
         return true;
@@ -77,19 +72,21 @@ bool solveSudoku(int board[9][9])
 
 
 // Function to print the Sudoku
-void printSudoku(int board[9][9])
-{
+void printSudoku(int board[9][9]){
   cout << "\nHere is the Solution for your Sudoku:" << endl;
-  for (int row = 0; row < 9; row++)
-  {
-    for (int col = 0; col < 9; col++)
+  cout << " -----------------------" << endl;
+  for (int row = 0; row < 9; row++){
+    cout << "| ";
+    for (int col = 0; col < 9; col++){
       cout << board[row][col] << " ";
+      if ((col + 1) % 3 == 0) cout << "| ";
+    }
     cout << endl;
+    if ((row + 1) % 3 == 0) cout << " -----------------------" << endl;
   }
 }
 
-int main()
-{
+int main(){
   int board[9][9];
   memset(board, 0, sizeof(board));
 
