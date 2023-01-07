@@ -101,7 +101,7 @@ int main()
   if (solveSudoku(board))
     printSudoku(board);
   else
-    cout << "Unable to solve the Sudoku" << endl;
+    cout << "\nUnable to solve the Sudoku" << endl;
 
   return 0;
 }
